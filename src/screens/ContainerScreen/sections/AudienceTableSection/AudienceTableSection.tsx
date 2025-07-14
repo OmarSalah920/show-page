@@ -611,6 +611,11 @@ export const AudienceTableSection = (): JSX.Element => {
     console.log('Edit Campaign button clicked');
   };
 
+  const handleViewCallsClick = (identifier: string) => {
+    // Do nothing as requested
+    console.log('View calls clicked for:', identifier);
+  };
+
   return (
     <section className="w-full bg-neutral-100 p-6">
       <div className="w-full">
@@ -902,6 +907,9 @@ export const AudienceTableSection = (): JSX.Element => {
                 <TableHead className="font-semibold text-xs text-[#000000e0]">
                   Result
                 </TableHead>
+                <TableHead className="font-semibold text-xs text-[#000000e0]">
+                  Call Logs
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -934,6 +942,14 @@ export const AudienceTableSection = (): JSX.Element => {
                   </TableCell>
                   <TableCell className="text-xs text-[#000000e0]">
                     {row.result}
+                  </TableCell>
+                  <TableCell className="text-xs text-[#000000e0]">
+                    <button
+                      onClick={() => handleViewCallsClick(row.identifier)}
+                      className="text-blue-600 hover:text-blue-800 underline cursor-pointer"
+                    >
+                      view calls
+                    </button>
                   </TableCell>
                 </TableRow>
               ))}
