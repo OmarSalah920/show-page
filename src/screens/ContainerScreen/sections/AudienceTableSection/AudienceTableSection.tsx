@@ -928,7 +928,7 @@ export const AudienceTableSection = (): JSX.Element => {
                   </TableCell>
                   <TableCell className="text-xs text-[#000000e0]">
                     <div className="flex items-center">
-                      <span className="ml-7">{row.phone}</span>
+                      <span>{row.phone}</span>
                     </div>
                   </TableCell>
                   <TableCell className="text-xs text-[#000000e0]">
