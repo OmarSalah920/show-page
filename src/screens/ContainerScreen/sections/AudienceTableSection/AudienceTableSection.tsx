@@ -627,6 +627,7 @@ export const AudienceTableSection = (): JSX.Element => {
               variant="outline"
               className="h-8 text-xs gap-2"
               onClick={handleEditCampaign}
+              disabled={isPlaying}
             >
               <Edit className="h-3.5 w-3.5" />
               Edit Campaign
