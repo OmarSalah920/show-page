@@ -628,6 +628,7 @@ export const AudienceTableSection = (): JSX.Element => {
               className="h-8 text-xs gap-2"
               onClick={handleEditCampaign}
               disabled={isPlaying}
+              title={isPlaying ? "The campaign has to be paused to be able to edit it" : ""}
             >
               <Edit className="h-3.5 w-3.5" />
               Edit Campaign
