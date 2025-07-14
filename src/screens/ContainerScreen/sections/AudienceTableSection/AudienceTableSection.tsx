@@ -623,16 +623,23 @@ export const AudienceTableSection = (): JSX.Element => {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-medium">DirectToNoor</h2>
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              className="h-8 text-xs gap-2"
-              onClick={handleEditCampaign}
-              disabled={isPlaying}
-              title={isPlaying ? "The campaign has to be paused to be able to edit it" : ""}
-            >
-              <Edit className="h-3.5 w-3.5" />
-              Edit Campaign
-            </Button>
+            <div className="relative group">
+              <Button
+                variant="outline"
+                className="h-8 text-xs gap-2"
+                onClick={handleEditCampaign}
+                disabled={isPlaying}
+              >
+                <Edit className="h-3.5 w-3.5" />
+                Edit Campaign
+              </Button>
+              {isPlaying && (
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+                  The campaign has to be paused to be able to edit it
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+                </div>
+              )}
+            </div>
 
             <Dialog open={showImportModal} onOpenChange={setShowImportModal}>
               <DialogTrigger asChild>
