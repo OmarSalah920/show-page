@@ -916,12 +916,7 @@ export const AudienceTableSection = (): JSX.Element => {
               {audienceData.map((row, index) => (
                 <TableRow key={index}>
                   <TableCell className="text-xs text-[#000000e0]">
-                    <button
-                      onClick={() => handleCallIdClick(row.identifier)}
-                      className="text-blue-600 hover:text-blue-800 hover:underline cursor-pointer"
-                    >
-                      {row.identifier}
-                    </button>
+                    {row.identifier}
                   </TableCell>
                   <TableCell className="text-xs text-[#000000e0]">
                     {row.name}
