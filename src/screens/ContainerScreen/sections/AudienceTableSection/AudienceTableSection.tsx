@@ -881,7 +881,7 @@ export const AudienceTableSection = (): JSX.Element => {
             <TableHeader className="bg-neutral-50">
               <TableRow>
                 <TableHead className="font-semibold text-xs text-[#000000e0]">
-                  Call ID
+                  ID
                 </TableHead>
                 <TableHead className="font-semibold text-xs text-[#000000e0]">
                   Name
