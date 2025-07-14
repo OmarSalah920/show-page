@@ -599,10 +599,7 @@ export const AudienceTableSection = (): JSX.Element => {
     return listName.trim() !== '' && selectedFile !== null && !listNameError;
   };
 
-  const handleCallIdClick = (callId: string) => {
-    // Do nothing as requested
-    console.log('Call ID clicked:', callId);
-  };
+  
 
   const handleEditCampaign = () => {
     // Placeholder function for edit campaign functionality
