@@ -669,52 +669,6 @@ export const AudienceTableSection = (): JSX.Element => {
                 
                 <div className="mt-4">
                   <div className="space-y-4">
-                    {/* Import Options */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-3">
-                        Choose Import Method
-                      </label>
-                      <div className="grid grid-cols-2 gap-4">
-                        <button
-                          type="button"
-                          onClick={() => setImportOption('phonebook')}
-                          className={`p-4 border-2 rounded-lg text-left transition-colors ${
-                            importOption === 'phonebook'
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
-                        >
-                          <div className="flex items-center gap-3">
-                            <Users className="h-5 w-5 text-blue-600" />
-                            <div>
-                              <div className="font-medium text-gray-900">From Phonebook</div>
-                              <div className="text-sm text-gray-500">Import from existing lists</div>
-                            </div>
-                          </div>
-                        </button>
-                        
-                        <button
-                          type="button"
-                          onClick={() => setImportOption('file')}
-                          className={`p-4 border-2 rounded-lg text-left transition-colors ${
-                            importOption === 'file'
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
-                        >
-                          <div className="flex items-center gap-3">
-                            <Upload className="h-5 w-5 text-blue-600" />
-                            <div>
-                              <div className="font-medium text-gray-900">Upload File</div>
-                              <div className="text-sm text-gray-500">CSV or Excel file</div>
-                            </div>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Phonebook Selection */}
-                    {importOption === 'phonebook' && (
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Select Phonebook List
@@ -732,104 +686,6 @@ export const AudienceTableSection = (): JSX.Element => {
                         </SelectContent>
                       </Select>
                     </div>
-                    )}
-
-                    {/* File Upload Section */}
-                    {importOption === 'file' && (
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            List Name <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            value={listName}
-                            onChange={(e) => handleListNameChange(e.target.value)}
-                            placeholder="Enter a name for this contact list"
-                            className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-                              listNameError ? 'border-red-300' : 'border-gray-300'
-                            }`}
-                          />
-                          {listNameError && (
-                            <p className="mt-1 text-sm text-red-600">{listNameError}</p>
-                          )}
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Upload File <span className="text-red-500">*</span>
-                          </label>
-                          
-                          {/* File Upload Area */}
-                          <div
-                            className={`relative border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
-                              isDragOver
-                                ? 'border-blue-400 bg-blue-50'
-                                : selectedFile
-                                ? 'border-green-400 bg-green-50'
-                                : 'border-gray-300 hover:border-gray-400'
-                            }`}
-                            onDragOver={handleDragOver}
-                            onDragLeave={handleDragLeave}
-                            onDrop={handleDrop}
-                          >
-                            <input
-                              ref={fileInputRef}
-                              type="file"
-                              accept=".csv,.xlsx,.xls"
-                              onChange={handleFileUpload}
-                              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                            />
-                            
-                            {selectedFile ? (
-                              <div className="flex items-center justify-center gap-3">
-                                <FileText className="h-8 w-8 text-green-600" />
-                                <div className="text-left">
-                                  <p className="text-sm font-medium text-green-700">
-                                    {selectedFile.name}
-                                  </p>
-                                  <p className="text-xs text-green-600">
-                                    {(selectedFile.size / 1024).toFixed(1)} KB
-                                  </p>
-                                </div>
-                                <button
-                                  type="button"
-                                  onClick={clearSelectedFile}
-                                  className="ml-2 p-1 hover:bg-green-100 rounded-full transition-colors"
-                                >
-                                  <X className="h-4 w-4 text-green-600" />
-                                </button>
-                              </div>
-                            ) : (
-                              <div>
-                                <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                                <p className="text-sm text-gray-600 mb-1">
-                                  <span className="font-medium text-blue-600 hover:text-blue-500 cursor-pointer">
-                                    Click to upload
-                                  </span>{' '}
-                                  or drag and drop
-                                </p>
-                                <p className="text-xs text-gray-500">
-                                  CSV or Excel files up to 10MB
-                                </p>
-                              </div>
-                            )}
-                          </div>
-                          
-                          {/* Download Sample Link */}
-                          <div className="mt-2 text-center">
-                            <button
-                              type="button"
-                              onClick={downloadSampleFile}
-                              className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 hover:underline"
-                            >
-                              <Download className="h-3 w-3" />
-                              Download sample file
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    )}
                   </div>
 
                   {/* Bottom buttons section */}
@@ -844,39 +700,20 @@ export const AudienceTableSection = (): JSX.Element => {
                       Cancel
                     </Button>
                     
-                    {importOption === 'phonebook' && (
-                      <Button 
-                        onClick={handlePhonebookImport}
-                        disabled={!selectedPhonebook || isLoading}
-                        className="bg-blue-600 hover:bg-blue-700"
-                      >
-                        {isLoading ? (
-                          <>
-                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                            Importing...
-                          </>
-                        ) : (
-                          'Import from Phonebook'
-                        )}
-                      </Button>
-                    )}
-                    
-                    {importOption === 'file' && (
-                      <Button 
-                        onClick={handleFileImport}
-                        disabled={!canProceedWithFileUpload() || isLoading}
-                        className="bg-blue-600 hover:bg-blue-700"
-                      >
-                        {isLoading ? (
-                          <>
-                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                            Processing...
-                          </>
-                        ) : (
-                          'Upload & Import'
-                        )}
-                      </Button>
-                    )}
+                    <Button 
+                      onClick={handlePhonebookImport}
+                      disabled={!selectedPhonebook || isLoading}
+                      className="bg-blue-600 hover:bg-blue-700"
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          Importing...
+                        </>
+                      ) : (
+                        'Import'
+                      )}
+                    </Button>
                   </div>
                 </div>
               </DialogContent>
